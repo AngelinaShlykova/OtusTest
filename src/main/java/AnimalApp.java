@@ -30,7 +30,7 @@ public class AnimalApp {
                 }
             } else if (currentCommand == Command.ADD) {
 
-                System.out.println("Какое животное? (cat / dog / duck):");
+                System.out.println("Какое животное? (cat/dog/duck):");
                 String typeInput = scanner.next().trim().toLowerCase();
 
                 AnimalType animalType;
