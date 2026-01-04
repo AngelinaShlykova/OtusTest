@@ -1,9 +1,5 @@
 package animals;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.List;
-
 public abstract class Animal {
 
     private String name;
