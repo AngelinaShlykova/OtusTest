@@ -1,15 +1,46 @@
 package animals;
 
-public class Animal {
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
 
-    private static final String name = "Бобик";
-    private static final double weight = 15.0;
-    private static final String color = "черный";
-    private Integer age;
+public abstract class Animal {
 
+    private String name;
+    private int age;
+    private int weight;
+    private Color color;
 
-    public Integer getAge() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
         return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     public void say() {
@@ -30,16 +61,26 @@ public class Animal {
 
     @Override
     public String toString() {
-        String ageNew = String.valueOf(getAge());
-        return "Привет! Меня зовут " + name +
-                ", мне " + ageNew + " лет, " +
-                "я вешу - " + weight + " кг, " +
-                "мой цвет - " + color;
+        return String.format("Привет! Меня зовут %s, мне %d %s, я вешу - %d кг, мой цвет - %s." , name, age, getAgeSuffix(), weight, getColorValue());
     }
 
-    public Animal (Integer age) {
-        this.age = age;
+    private String getColorValue() {
+        if (color == null) {
+            return  "неизвестный";
+        }
+        return color.getValue();
     }
 
+    private String getAgeSuffix() {
+        int remainder10 = age % 10;
+        int remainder100 = age % 100;
+        if (remainder10 == 1 && remainder100 != 11) {
+            return "год";
+        }
+        if (remainder10 >= 2 && remainder10 <= 4 && remainder100 != 12 && remainder100 != 13 && remainder100 != 14) {
+            return "года";
+        }
+        return "лет";
 
+    }
 }
