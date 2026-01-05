@@ -50,15 +50,31 @@ public class AnimalApp {
                 scanner.nextLine();
 
                 System.out.println("Имя животного? :");
-                String name = scanner.nextLine().trim();
-                animal.setName(name);
+                String nameInput = scanner.nextLine();
+                if (nameInput == null || nameInput.trim().isEmpty()) {
+                    System.out.println("Имя не может быть пустым");
+                    continue;
+                }
+                animal.setName(nameInput.trim());
 
                 System.out.println("Возраст животного ?:");
-                int age = Integer.parseInt(scanner.nextLine().trim());
+                String ageInput = scanner.nextLine().trim();
+
+                if (!ageInput.matches("^[1-9]\\d?$")) {
+                    System.out.println("Для возраста используйте цифры от 1 до 99");
+                    continue;
+                }
+
+                int age = Integer.parseInt(ageInput);
                 animal.setAge(age);
 
                 System.out.println("Вес животного ?:");
-                int weight = Integer.parseInt(scanner.nextLine().trim());
+                String weightInput = scanner.nextLine().trim();
+                if (!weightInput.matches("^[1-9]\\d?$")) {
+                    System.out.println("Вес должен быть положительным целым числом");
+                    continue;
+                }
+                int weight = Integer.parseInt(weightInput);
                 animal.setWeight(weight);
 
                 System.out.println("Цвет животного ?:");
