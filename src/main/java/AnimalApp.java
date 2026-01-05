@@ -57,24 +57,32 @@ public class AnimalApp {
                 }
                 animal.setName(nameInput.trim());
 
-                System.out.println("Возраст животного?:");
-                String ageInput = scanner.nextLine().trim();
+                int age = 0;
+                while (true) {
+                    System.out.println("Возраст животного ?: ");
+                    String ageInput = scanner.nextLine().trim();
 
-                if (!ageInput.matches("^[1-9]\\d?$")) {
-                    System.out.println("Для возраста используйте цифры от 1 до 99");
-                    continue;
+                    if (ageInput.matches("^[1-9]\\d?$")) {
+                        age = Integer.parseInt(ageInput);
+                        break;
+                    } else {
+                        System.out.println("Возраст должен быть целым числом от 1 до 99");
+                    }
                 }
-
-                int age = Integer.parseInt(ageInput);
                 animal.setAge(age);
 
-                System.out.println("Вес животного?:");
-                String weightInput = scanner.nextLine().trim();
-                if (!weightInput.matches("^[1-9]\\d?$")) {
-                    System.out.println("Вес должен быть положительным целым числом");
-                    continue;
+                int weight = 0;
+                while (true) {
+                    System.out.println("Вес животного ?: ");
+                    String weightInput = scanner.nextLine().trim();
+
+                    if (weightInput.matches("^[1-9]\\d?$")) {
+                        weight = Integer.parseInt(weightInput);
+                        break;
+                    } else {
+                        System.out.println("Вес должен быть целым числом от 1 до 99");
+                    }
                 }
-                int weight = Integer.parseInt(weightInput);
                 animal.setWeight(weight);
 
                 System.out.println("Цвет животного?:");
