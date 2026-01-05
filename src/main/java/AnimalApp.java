@@ -57,7 +57,7 @@ public class AnimalApp {
                 }
                 animal.setName(nameInput.trim());
 
-                System.out.println("Возраст животного ?:");
+                System.out.println("Возраст животного?:");
                 String ageInput = scanner.nextLine().trim();
 
                 if (!ageInput.matches("^[1-9]\\d?$")) {
@@ -68,7 +68,7 @@ public class AnimalApp {
                 int age = Integer.parseInt(ageInput);
                 animal.setAge(age);
 
-                System.out.println("Вес животного ?:");
+                System.out.println("Вес животного?:");
                 String weightInput = scanner.nextLine().trim();
                 if (!weightInput.matches("^[1-9]\\d?$")) {
                     System.out.println("Вес должен быть положительным целым числом");
@@ -77,7 +77,7 @@ public class AnimalApp {
                 int weight = Integer.parseInt(weightInput);
                 animal.setWeight(weight);
 
-                System.out.println("Цвет животного ?:");
+                System.out.println("Цвет животного?:");
                 String colorStr = scanner.nextLine().trim();
                 animal.setColor(Color.fromString(colorStr));
 
