@@ -4,6 +4,7 @@ import factory.AnimalFactory;
 import factory.AnimalType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,15 +31,18 @@ public class AnimalApp {
                 }
             } else if (currentCommand == Command.ADD) {
 
-                System.out.println("Какое животное? (cat/dog/duck):");
-                String typeInput = scanner.next().trim().toLowerCase();
+                AnimalType animalType = null;
+                List<String> validTypes = Arrays.asList("cat", "dog", "duck");
 
-                AnimalType animalType;
-                try {
-                    animalType = AnimalType.valueOf(typeInput.toUpperCase());
-                } catch (IllegalArgumentException e) {
-                    System.out.println("Неизвестный тип животного: " + typeInput);
-                    continue;
+                while (animalType == null) {
+                    System.out.println("Какое животное? (cat/dog/duck):");
+                    String typeInput = scanner.next().trim().toLowerCase();
+
+                    if (validTypes.contains(typeInput)) {
+                        animalType = AnimalType.valueOf(typeInput.toUpperCase());
+                    } else {
+                        System.out.println("Неизвестный тип животного: " + typeInput);
+                    }
                 }
 
                 Animal animal = animalFactory.create(animalType);
@@ -85,8 +89,14 @@ public class AnimalApp {
                 }
                 animal.setWeight(weight);
 
-                System.out.println("Цвет животного?:");
-                String colorStr = scanner.nextLine().trim();
+                String colorStr = "";
+                while (colorStr.isEmpty()) {
+                    System.out.println("Цвет животного ?: ");
+                    colorStr = scanner.nextLine().trim();
+                    if (colorStr.isEmpty()) {
+                        System.out.println("Цвет не может быть пустым");
+                    }
+                }
                 animal.setColor(Color.fromString(colorStr));
 
                 animals.add(animal);
