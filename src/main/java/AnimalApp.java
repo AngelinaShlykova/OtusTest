@@ -68,7 +68,7 @@ public class AnimalApp {
                 int age = Integer.parseInt(ageInput);
                 animal.setAge(age);
 
-                System.out.println("Вес животного ?:");
+                System.out.println("Вес животного?:");
                 String weightInput = scanner.nextLine().trim();
                 if (!weightInput.matches("^[1-9]\\d?$")) {
                     System.out.println("Вес должен быть положительным целым числом");
