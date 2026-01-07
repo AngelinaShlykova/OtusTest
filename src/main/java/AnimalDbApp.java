@@ -45,7 +45,7 @@ public class AnimalDbApp {
         System.out.print("Имя: ");
         String name = scanner.nextLine().trim();
 
-        System.out.print("Тип (CAT/DOG/DUCK): ");
+        System.out.print("Тип (CAT/DOG/DUCK) ");
         String type = scanner.nextLine().trim().toUpperCase();
 
         System.out.print("Цвет: ");
